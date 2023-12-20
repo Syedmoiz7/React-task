@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './customer.css'
 import logo from '../../Images/images.png'
 import customerIcon from '../../Images/customers icon.png'
+import customerPic from '../../Images/customer pic.png'
+import { useNavigate } from 'react-router-dom'
+
 function Customers() {
+    const navigate = useNavigate()
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [image, setImage] = useState("");
+
+    const handleClick = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <div className='w-screen h-screen flex main' >
             <div className="sidebar" >
@@ -23,26 +35,29 @@ function Customers() {
                 </div>
 
                 <div className='custWithTable'>
-                    <div className='AddNewCust w-60	h-11 ml-14 flex mt-8 text-white	
+                    <div className='AddNewCust w-60	h-11 ml-14 flex mt-8 	
                                  items-center justify-center font-semibold	'>
-                        <h2>+ ADD NEW CUSTOMER</h2>
+                        <h2 className='text-white hover:cursor-pointer'
+                            onClick={handleClick}>
+                            + ADD NEW CUSTOMER</h2>
                     </div>
 
-                    <div className="table border-black">
-                        <table cellPadding={10} cellSpacing={10}>
-                            <tr>
+                    <div className="table-auto mt-8 flex justify-center">
+                        <table cellPadding={15} >
+                            <tr className='tableHeadings 	h-1	   ' >
                                 <th></th>
                                 <th>Customer ID</th>
                                 <th>Customer Name</th>
                                 <th>Email</th>
-                                <th></th>
+
                             </tr>
-                            <tr>
-                                <td>Image</td>
+                            <tr className='text-xs	'>
+                                <td><img src={customerPic} alt="" className='w-14	' /></td>
                                 <td>001</td>
                                 <td>Jordan Joseph</td>
-                                <td>randomemail@gmail.com</td>
-                                <td><button>Edit</button> <button>Delete</button></td>
+                                <td colSpan={0}>randomemail@gmail.com</td>
+                                <td><button>Edit</button> </td>
+                                <td><button>Delete</button></td>
                             </tr>
                         </table>
                     </div>

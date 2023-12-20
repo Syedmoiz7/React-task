@@ -1,9 +1,13 @@
 import './App.css';
 import Customers from './components/Customers/Customers';
+import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Customers />
+      <Routes>
+        <Route path='/' element={<Customers />}> </Route>
+        <Route path='/addCustomer' element={<Customers />}> </Route>
+      </Routes>
     </div>
   );
 }
